@@ -37,6 +37,8 @@ const getToken = async (rl, instanceUrl, clientName, scopes = 'read write follow
   const accessToken = await Mastodon.getAccessToken(clientId, clientSecret, code, instanceUrl);
   console.log('Congratulations! This is the access token. Save it!');
   console.log(accessToken);
+
+  return accessToken;
 };
 
 const run = async () => {
@@ -56,9 +58,14 @@ const run = async () => {
     throw new Error('Requester name is mandatory');
   }
 
-  await getToken(rl, instanceUrl, clientName, scopes || 'read write follow');
+  const accessToken = await getToken(rl, instanceUrl, clientName, scopes || 'read write follow');
 
   rl.close();
+
+  return {
+    accessToken,
+    instanceUrl,
+  };
 };
 
 run()

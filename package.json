@@ -2,10 +2,11 @@
   "name": "mastodon-api-token",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "index-compiled.js",
   "author": "Kuro",
   "scripts": {
-    "start": "node ./node_modules/babel-cli/bin/babel-node.js ./index.js"
+    "start": "node ./index-compiled.js",
+    "compile": "node ./node_modules/babel-cli/bin/babel.js index.js --out-file index-compiled.js"    
   },
   "license": "",
   "dependencies": {
